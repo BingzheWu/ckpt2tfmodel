@@ -9,18 +9,6 @@ FLAGS = tf.app.flags.FLAGS
 def write_proto(file_path, graph_def):
     with open(file_path,'wb')as f:
         f.write(graph_def.SerializeToString())
-def del_moving_average_op():
-    #ans = []
-    #for op in graph.get_operations():
-     #   if 'ExponentialMovingAverage' not in op.name:
-      #      ans.append(op.name)
-    with tf.Graph().as_default():
-        with tf.Session() as sess:
-            saver = import_graph_def()
-            load_weights(sess = sess, saver = saver)
-            saver.save(sess,'/home/ceca/bingzhe/data/model/model', global_step = 0)
-    return 0
-
 def convert(save_path = FLAGS.save_path, model_name = 'facenet.tfmodel', RESULTS_NODE_NAME = 'embeddings'):
     with tf.Graph().as_default():
         with tf.Session() as sess:
